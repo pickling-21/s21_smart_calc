@@ -4,6 +4,6 @@
 
 int main() {
   struct list *a = inf_to_post();
-  list_foreach(a, print_int64_space);
+  list_foreach(a, print_symbols);
   return 0;
 }

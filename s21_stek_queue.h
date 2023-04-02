@@ -4,46 +4,35 @@
 #include <stddef.h>
 #include <stdint.h>
 
-/* num */
+/*---------------------*/
+
+/* list(queune)*/
+
 struct maybe_num {
   double value;
   bool valid;
 };
 
-struct maybe_sign {
-  char value;
-  bool valid;
-};
+enum type { NO_TYPE, NUMBER, OPERATION };
 
-/*---------------------*/
-
-/* list(queune)*/
-
-enum type {
-  number,
-  operation,
-};
-
-enum priorities {
-  hello,
-};
-
-enum operations {
-  o_add,
-  o_sub,
-  o_mul,
-  o_div,
-};
-
-struct operation {
-  enum operations oper;
-  enum priorities priority;
+enum oper_category {
+  NONE,
+  SIN,
+  COS,
+  LEFT,
+  RIGHT,
+  PLUS,
+  MINUS,
+  MUL,
+  DIV,
+  MOD,
+  POWER,
 };
 
 struct symbols {
   enum type type;
   double number;
-  struct operation operation;
+  enum oper_category operator;
 };
 
 struct list {
@@ -57,9 +46,9 @@ struct stack_double {
   size_t size;
 };
 
-struct stack_char {
+struct stack_operators {
   size_t count;
-  double *data;
+  enum oper_category *data;
   size_t size;
 };
 
@@ -79,6 +68,9 @@ struct ins_descr {
 };
 /* --------------*/
 
+struct symbols some_oper(enum oper_category o);
+struct symbols some_number(double i);
+
 // добавить возврат enum у функций?
 struct stack_interface {
   struct stack_double_interface {
@@ -89,23 +81,27 @@ struct stack_interface {
     bool (*push)(struct stack_double *, double);
     struct maybe_num (*pop)(struct stack_double *);
   } double_st;
-  struct stack_char_interface {
-    struct stack_char (*create)(size_t);
-    bool (*empty)(struct stack_char const *);
-    bool (*full)(struct stack_char const *);
-    void (*destroy)(struct stack_char *);
-    bool (*push)(struct stack_char *, double);
-    struct maybe_sign (*pop)(struct stack_char *);
-  } char_st;
+  struct stack_operators_interface {
+    struct stack_operators (*create)(size_t);
+    bool (*empty)(struct stack_operators const *);
+    bool (*full)(struct stack_operators const *);
+    void (*destroy)(struct stack_operators *);
+    bool (*push)(struct stack_operators *, enum oper_category);
+    enum oper_category (*pop)(struct stack_operators *);
+    enum oper_category (*last)(struct stack_operators *);
+    void (*print)(struct stack_operators *);
+  } opers_st;
 };
 
 /*char stack*/
-struct stack_char stack_char_create(size_t size);
-void stack_char_destroy(struct stack_char *s);
-bool stack_char_push(struct stack_char *s, double value);
-struct maybe_sign stack_char_pop(struct stack_char *s);
-bool stack_char_is_empty(const struct stack_char *s);
-bool stack_char_is_full(const struct stack_char *s);
+struct stack_operators stack_operators_create(size_t size);
+void stack_operators_destroy(struct stack_operators *s);
+bool stack_operators_push(struct stack_operators *s, enum oper_category value);
+enum oper_category stack_operators_pop(struct stack_operators *s);
+bool stack_operators_is_empty(const struct stack_operators *s);
+bool stack_operators_is_full(const struct stack_operators *s);
+enum oper_category stack_operators_last(struct stack_operators *s);
+void stack_operators_print(struct stack_operators *s);
 
 /*double stack*/
 // добавить функции арифметики (для чтения постфиксной нотации)
@@ -119,6 +115,7 @@ bool stack_double_is_full(const struct stack_double *s);
 /*---------------------------*/
 
 void print_int64_space(double i);
+void print_symbols(struct symbols i);
 
 struct list *node_create(struct symbols value);
 void list_add_front(struct list **old, struct symbols value);
@@ -127,8 +124,8 @@ size_t list_length(struct list const *const list);
 void list_destroy(struct list *list);
 struct list *list_last(struct list *list);
 void list_add_back(struct list **old, struct symbols value);
-void list_foreach(struct list const *l, void(f)(double));
-
+void list_foreach(struct list const *l, void(f)(struct symbols));
+bool last_from_stack_to_list(struct list *l, struct stack_operators *s);
 /*---------------------*/
 
 #endif  // S21_STEK_QUEUE_H

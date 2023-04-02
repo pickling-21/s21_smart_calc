@@ -3,26 +3,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct maybe_sign some_sign(char i) { return (struct maybe_sign){i, true}; }
-const struct maybe_sign none_sign = {0};
-
-struct maybe_num some_num(double i) { return (struct maybe_num){i, true}; }
 const struct maybe_num none_num = {0};
+struct maybe_num some_num(double i) {
+  return (struct maybe_num){.valid = true, .value = i};
+}
 
-const struct stack_interface stack_c = {
-    .char_st = {stack_char_create, stack_char_is_empty, stack_char_is_full,
-                stack_char_destroy, stack_char_push, stack_char_pop}};
-
-const struct stack_interface stack_d = {
-    .double_st = {stack_double_create, stack_double_is_empty,
-                  stack_double_is_full, stack_double_destroy, stack_double_push,
-                  stack_double_pop}};
+// const struct stack_interface stack_d = {
+//     .double_st = {stack_double_create, stack_double_is_empty,
+//                   stack_double_is_full, stack_double_destroy,
+//                   stack_double_push, stack_double_pop}};
 
 const char *const stack_error_messages[] = {
     [STACK_OVERFLOW] = "Не хватает места, стек заполнен",
     [STACK_UNDERFLOW] =
         "В стеке слишком мало элементов для совершения операции",
 };
+
+const char *const oper_sym_s[] = {
+    [LEFT] = "(", [PLUS] = "+",  [MINUS] = "-", [MUL] = "*",
+    [DIV] = "/",  [MOD] = "mod", [POWER] = "^"};
+
+struct symbols some_oper(enum oper_category o) {
+  return (struct symbols){.type = OPERATION, .operator= o };
+};
+struct symbols some_number(double i) {
+  return (struct symbols){.type = NUMBER, .number = i};
+};
+
+// const int8_t oper_priority[] = {[LEFT] = 0, [PLUS] = 1, [MINUS] = 1, [MUL] =
+// 2,
+//                                 [DIV] = 2,  [MOD] = 2,  [POWER] = 3};
 
 /* double stack */
 struct stack_double stack_double_create(size_t size) {
@@ -69,24 +79,24 @@ bool stack_double_is_empty(const struct stack_double *s) {
 
 /*---------------------*/
 
-/* char stack*/
-struct stack_char stack_char_create(size_t size) {
-  struct stack_char result = {0, NULL, 0};
+/* operators stack*/
+struct stack_operators stack_operators_create(size_t size) {
+  struct stack_operators result = {0, NULL, 0};
   if (size > 0) {
-    result.data = malloc(sizeof(struct stack_char) * size);
+    result.data = malloc(sizeof(struct stack_operators) * size);
     result.size = size;
   }
   return result;
 }
 
-void stack_char_destroy(struct stack_char *s) {
+void stack_operators_destroy(struct stack_operators *s) {
   free(s->data);
   s->count = 0;
 };
 
-bool stack_char_push(struct stack_char *s, double value) {
+bool stack_operators_push(struct stack_operators *s, enum oper_category value) {
   bool result = false;
-  if (!stack_char_is_full(s)) {
+  if (!stack_operators_is_full(s)) {
     s->data[s->count] = value;
     s->count = (s->count) + 1;
     result = true;
@@ -94,27 +104,54 @@ bool stack_char_push(struct stack_char *s, double value) {
   return result;
 }
 
-struct maybe_sign stack_char_pop(struct stack_char *s) {
-  struct maybe_sign result = none_sign;
-  if (!stack_char_is_empty(s)) {
+enum oper_category stack_operators_pop(struct stack_operators *s) {
+  enum oper_category result = NONE;
+  if (!stack_operators_is_empty(s)) {
     s->count--;
-    result = some_sign(s->data[s->count]);
-    s->data[s->count] = 0;
+    result = s->data[s->count];
+    s->data[s->count] = NONE;
   }
   return result;
 }
 
-bool stack_char_is_full(const struct stack_char *s) {
-  return (*s).count == (*s).size;
+enum oper_category stack_operators_last(struct stack_operators *s) {
+  enum oper_category result = NONE;
+  if (!stack_operators_is_empty(s)) {
+    result = s->data[s->count - 1];
+  }
+  return result;
+}
+
+bool stack_operators_is_full(const struct stack_operators *s) {
+  return s->count == s->size;
 }
 // Стек пустой
-bool stack_char_is_empty(const struct stack_char *s) { return (*s).count == 0; }
+bool stack_operators_is_empty(const struct stack_operators *s) {
+  return s->count == 0;
+}
+
+void stack_operators_print(struct stack_operators *s) {
+  const char *const oper_sym[] = {
+      [LEFT] = "(", [RIGHT] = ")", [PLUS] = "+",  [MINUS] = "-",
+      [MUL] = "*",  [DIV] = "/",   [MOD] = "mod", [POWER] = "^"};
+  for (size_t i = 0; i < s->count; i++) {
+    printf("%s ", oper_sym[s->data[i]]);
+  }
+}
 
 /* list(queune)*/
 
 void print_int64_space(double i) {
   printf("%lf", i);
   printf(" ");
+}
+
+void print_symbols(struct symbols i) {
+  if (i.type == NUMBER) {
+    print_int64_space(i.number);
+  } else if (i.type == OPERATION) {
+    printf("%s ", oper_sym_s[i.operator]);
+  }
 }
 
 struct list *node_create(struct symbols value) {
@@ -166,11 +203,24 @@ void list_add_back(struct list **old, struct symbols value) {
     list_add_front(old, value);
   }
 }
-void list_foreach(struct list const *l, void(f)(double)) {
+void list_foreach(struct list const *l, void(f)(struct symbols)) {
   while (l) {
-    f(l->value.number);
+    f(l->value);
     l = l->next;
   }
 }
 
 /*---------------------*/
+
+bool last_from_stack_to_list(struct list *l, struct stack_operators *s) {
+  bool result = false;
+  enum oper_category o = stack_operators_pop(s);
+  if (o != NONE) {
+    list_add_back(&l, some_oper(o));
+    result = true;
+  }
+  return result;
+}
+
+void push_to_list_until(bool f(enum oper_category, enum oper_category),
+                        struct list *l, struct stack_operators *s) {}
