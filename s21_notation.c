@@ -125,13 +125,16 @@ void add_number(struct list *l, char **str) {
 
 enum oper_category operator_check(char const *str, char **end) {
   enum oper_category result = NONE;
-  for (size_t i = 0; i < QTY_OF_OPERS; i++) {
+  *end = (char *)str;
+  for (size_t i = 0, stop = 0; i < QTY_OF_OPERS && stop != 1; i++) {
     if (opers[i].str != NULL) {
       if (strncmp(str, opers[i].str, opers[i].lenght) == 0) {
         result = i;
+        stop = 1;
       }
     }
   }
+  *end += opers[result].lenght;
   return result;
 }
 
