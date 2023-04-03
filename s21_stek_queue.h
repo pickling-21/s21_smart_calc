@@ -16,17 +16,18 @@ struct maybe_num {
 enum type { NO_TYPE, NUMBER, OPERATION };
 
 enum oper_category {
-  NONE,
-  SIN,
-  COS,
-  LEFT,
-  RIGHT,
-  PLUS,
-  MINUS,
-  MUL,
-  DIV,
-  MOD,
-  POWER,
+  CAT_NONE = 0,
+  CAT_SIN = 1,
+  CAT_COS = 2,
+  CAT_LEFT = 3,
+  CAT_RIGHT = 4,
+  CAT_PLUS = 5,
+  CAT_MINUS = 6,
+  CAT_MUL = 7,
+  CAT_DIV = 8,
+  CAT_MOD = 9,
+  CAT_POWER = 10,
+  CAT_COMMA = 11,
 };
 
 struct symbols {

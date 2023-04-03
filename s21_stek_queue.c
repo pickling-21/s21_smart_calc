@@ -20,8 +20,8 @@ const char *const stack_error_messages[] = {
 };
 
 const char *const oper_sym_s[] = {
-    [LEFT] = "(", [PLUS] = "+",  [MINUS] = "-", [MUL] = "*",
-    [DIV] = "/",  [MOD] = "mod", [POWER] = "^"};
+    [CAT_LEFT] = "(", [CAT_PLUS] = "+",  [CAT_MINUS] = "-", [CAT_MUL] = "*",
+    [CAT_DIV] = "/",  [CAT_MOD] = "mod", [CAT_POWER] = "^"};
 
 struct symbols some_oper(enum oper_category o) {
   return (struct symbols){.type = OPERATION, .operator= o };
@@ -105,17 +105,17 @@ bool stack_operators_push(struct stack_operators *s, enum oper_category value) {
 }
 
 enum oper_category stack_operators_pop(struct stack_operators *s) {
-  enum oper_category result = NONE;
+  enum oper_category result = CAT_NONE;
   if (!stack_operators_is_empty(s)) {
     s->count--;
     result = s->data[s->count];
-    s->data[s->count] = NONE;
+    s->data[s->count] = CAT_NONE;
   }
   return result;
 }
 
 enum oper_category stack_operators_last(struct stack_operators *s) {
-  enum oper_category result = NONE;
+  enum oper_category result = CAT_NONE;
   if (!stack_operators_is_empty(s)) {
     result = s->data[s->count - 1];
   }
@@ -132,8 +132,9 @@ bool stack_operators_is_empty(const struct stack_operators *s) {
 
 void stack_operators_print(struct stack_operators *s) {
   const char *const oper_sym[] = {
-      [LEFT] = "(", [RIGHT] = ")", [PLUS] = "+",  [MINUS] = "-",
-      [MUL] = "*",  [DIV] = "/",   [MOD] = "mod", [POWER] = "^"};
+      [CAT_LEFT] = "(",  [CAT_RIGHT] = ")", [CAT_PLUS] = "+",
+      [CAT_MINUS] = "-", [CAT_MUL] = "*",   [CAT_DIV] = "/",
+      [CAT_MOD] = "mod", [CAT_POWER] = "^"};
   for (size_t i = 0; i < s->count; i++) {
     printf("%s ", oper_sym[s->data[i]]);
   }
@@ -215,7 +216,7 @@ void list_foreach(struct list const *l, void(f)(struct symbols)) {
 bool last_from_stack_to_list(struct list *l, struct stack_operators *s) {
   bool result = false;
   enum oper_category o = stack_operators_pop(s);
-  if (o != NONE) {
+  if (o != CAT_NONE) {
     list_add_back(&l, some_oper(o));
     result = true;
   }

@@ -12,12 +12,7 @@ struct opers {
   enum oper_category top;
 };
 
-enum oper_type {
-  NO_OPER_TYPE,
-  BRACKETS,
-  FUNC,
-  SIMPLE,
-};
+enum oper_type { NO_OPER_TYPE, BRACKETS, FUNC, SIMPLE, SEP };
 
 struct oper {
   enum oper_category category;
