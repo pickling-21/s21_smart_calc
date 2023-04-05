@@ -19,26 +19,19 @@ const char *const stack_error_messages[] = {
         "В стеке слишком мало элементов для совершения операции",
 };
 
-const char *const oper_sym_s[] = {
-    [CAT_LEFT] = "(", [CAT_PLUS] = "+",  [CAT_MINUS] = "-", [CAT_MUL] = "*",
-    [CAT_DIV] = "/",  [CAT_MOD] = "mod", [CAT_POWER] = "^"};
-
 struct symbols some_oper(enum oper_category o) {
-  return (struct symbols){.type = OPERATION, .operator= o };
-};
-struct symbols some_number(double i) {
-  return (struct symbols){.type = NUMBER, .number = i};
+  return (struct symbols){.type = S_OPERATION, .operator= o };
 };
 
-// const int8_t oper_priority[] = {[LEFT] = 0, [PLUS] = 1, [MINUS] = 1, [MUL] =
-// 2,
-//                                 [DIV] = 2,  [MOD] = 2,  [POWER] = 3};
+struct symbols some_number(double i) {
+  return (struct symbols){.type = S_NUMBER, .number = i};
+};
 
 /* double stack */
 struct stack_double stack_double_create(size_t size) {
   struct stack_double result = {0, NULL, 0};
   if (size > 0) {
-    result.data = malloc(sizeof(struct stack_double) * size);
+    result.data = malloc(sizeof(double) * size);
     result.size = size;
   }
   return result;
@@ -47,6 +40,7 @@ struct stack_double stack_double_create(size_t size) {
 void stack_double_destroy(struct stack_double *s) {
   free(s->data);
   s->count = 0;
+  s->size = 0;
 };
 
 bool stack_double_push(struct stack_double *s, double value) {
@@ -83,7 +77,7 @@ bool stack_double_is_empty(const struct stack_double *s) {
 struct stack_operators stack_operators_create(size_t size) {
   struct stack_operators result = {0, NULL, 0};
   if (size > 0) {
-    result.data = malloc(sizeof(struct stack_operators) * size);
+    result.data = malloc(sizeof(enum oper_category) * size);
     result.size = size;
   }
   return result;
@@ -91,6 +85,7 @@ struct stack_operators stack_operators_create(size_t size) {
 
 void stack_operators_destroy(struct stack_operators *s) {
   free(s->data);
+  s->size = 0;
   s->count = 0;
 };
 
@@ -134,7 +129,7 @@ void stack_operators_print(struct stack_operators *s) {
   const char *const oper_sym[] = {
       [CAT_LEFT] = "(",  [CAT_RIGHT] = ")", [CAT_PLUS] = "+",
       [CAT_MINUS] = "-", [CAT_MUL] = "*",   [CAT_DIV] = "/",
-      [CAT_MOD] = "mod", [CAT_POWER] = "^"};
+      [CAT_MOD] = "mod", [CAT_POWER] = "^", [CAT_SIN] = "sin"};
   for (size_t i = 0; i < s->count; i++) {
     printf("%s ", oper_sym[s->data[i]]);
   }
@@ -148,9 +143,15 @@ void print_int64_space(double i) {
 }
 
 void print_symbols(struct symbols i) {
-  if (i.type == NUMBER) {
+  const char *const oper_sym_s[] = {
+      [CAT_LEFT] = "(",  [CAT_PLUS] = "+",  [CAT_MINUS] = "-",
+      [CAT_MUL] = "*",   [CAT_DIV] = "/",   [CAT_MOD] = "mod",
+      [CAT_POWER] = "^", [CAT_SIN] = "sin", [CAT_COS] = "cos",
+      [CAT_RIGHT] = ")", [CAT_COMMA] = ","};
+
+  if (i.type == S_NUMBER) {
     print_int64_space(i.number);
-  } else if (i.type == OPERATION) {
+  } else if (i.type == S_OPERATION) {
     printf("%s ", oper_sym_s[i.operator]);
   }
 }

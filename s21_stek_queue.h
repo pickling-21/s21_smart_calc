@@ -13,7 +13,7 @@ struct maybe_num {
   bool valid;
 };
 
-enum type { NO_TYPE, NUMBER, OPERATION };
+enum type { S_NO_TYPE, S_NUMBER, S_OPERATION };
 
 enum oper_category {
   CAT_NONE = 0,
@@ -94,7 +94,7 @@ struct stack_interface {
   } opers_st;
 };
 
-/*char stack*/
+/*operators stack*/
 struct stack_operators stack_operators_create(size_t size);
 void stack_operators_destroy(struct stack_operators *s);
 bool stack_operators_push(struct stack_operators *s, enum oper_category value);
@@ -112,6 +112,8 @@ bool stack_double_push(struct stack_double *s, double value);
 struct maybe_num stack_double_pop(struct stack_double *s);
 bool stack_double_is_empty(const struct stack_double *s);
 bool stack_double_is_full(const struct stack_double *s);
+
+/*char stack*/
 
 /*---------------------------*/
 
