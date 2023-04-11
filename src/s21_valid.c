@@ -35,6 +35,7 @@ enum valid_erorrs validator(const char* str, char* res_str,
 
 bool check_opers(struct va_opers o, size_t i) {
   bool res = true;
+
   if (o.curr.o_type == O_BINARY && i == 0) res = false;
   if (o.curr.o_type == O_BINARY && o.next.o_type == O_BINARY) res = false;
   return res;
