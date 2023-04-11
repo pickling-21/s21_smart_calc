@@ -16,26 +16,29 @@ struct str_info {
   size_t len;
 };
 
+struct va_opers {
+  struct operator_info curr;
+  struct operator_info next;
+};
+
+static bool is_digit(char c);
 bool is_space(const char sym);
 bool is_open_bracket(struct operator_info o);
 bool is_close_bracket(struct operator_info o);
 
+bool check_opers(struct va_opers o, size_t i);
+bool unary_or_binanry_two(struct operator_info curr, struct operator_info next);
+struct operator_info unary_from_two(struct operator_info curr,
+                                    struct operator_info next);
+struct operator_info binary_from_two(struct operator_info curr,
+                                     struct operator_info next);
+void replace_and_write(const char** str, char** res, char* full, char* nat);
+
 enum valid_erorrs validator(const char* str, char* res_str,
                             const struct stack_operators* opers);
-
-void remove_spaces(const char* str, char* result);
-
-void replace_full_name(const struct stack_operators* opers,
-                       struct str_info* res);
-
-struct operator_info find_one(struct stack_operators* s, char const* str);
-
-struct operator_info check_operators_full_name(
-    const struct stack_operators* opers, char const* str);
-// void replace_unary_minus(char* str, const struct
-// stack_operators* opers);
-// bool brackets_okey(const char* str, const struct stack_operators* opers);
-
+void replace_full_name(const struct stack_operators* opers, const char* str,
+                       char* result);
+bool brackets_okey(struct stack_operators* br, struct operator_info o);
 void print_error(enum valid_erorrs err);
 
 #endif  // S21_VALID_H

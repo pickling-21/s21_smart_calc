@@ -24,7 +24,7 @@ struct list *inf_to_post(char const *str, struct stack_operators *opers) {
   return head.next;
 }
 
-bool is_digit(char c) { return (c >= '0' && c <= '9'); }
+static bool is_digit(char c) { return (c >= '0' && c <= '9'); }
 
 void add_number(struct list *l, char const **str) {
   char *end_number = NULL;

@@ -112,6 +112,7 @@ struct stack_operators* stack_operators_find_full_name(
   return fr;
 }
 
+// не пушит без типа, пушит только со строкой
 struct stack_operators* stack_operators_find(
     const struct stack_operators* haystack, struct operator_info needle,
     find f) {
