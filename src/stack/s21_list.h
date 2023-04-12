@@ -3,7 +3,7 @@
 
 #include "s21_operators.h"
 
-enum l_type { L_NO_TYPE, L_NUMBER, L_OPERATOR };
+enum l_type { L_NO_TYPE, L_NUMBER, L_X, L_OPERATOR };
 
 struct lexeme {
   enum l_type type;
@@ -20,6 +20,7 @@ struct list *node_create(struct lexeme value);
 void list_add_front(struct list **old, struct lexeme value);
 void list_add_back(struct list **old, struct lexeme value);
 void list_add_back_num(struct list **old, double num);
+void list_add_back_x(struct list **old);
 // // добавляем в начало списка
 size_t list_length(struct list const *list);
 void list_destroy(struct list *list);

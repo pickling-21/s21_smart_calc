@@ -9,7 +9,7 @@ struct list *inf_to_post(char const *str, struct stack_operators *opers);
 
 // #define QTY_OF_OPERS 18
 
-static struct operators {
+struct operators {
   struct operator_info curr;
   struct operator_info top;
 };
@@ -19,7 +19,6 @@ void add_operators(struct stack_operators *opers, struct stack_operators *s,
 
 struct list *inf_to_post(char const *str, struct stack_operators *opers);
 
-static bool is_digit(char c);
 void add_number(struct list *l, char const **str);
 struct operator_info check_operators_nat_name(struct stack_operators *opers,
                                               char const **str);
