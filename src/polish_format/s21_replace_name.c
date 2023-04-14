@@ -1,4 +1,6 @@
-#include "s21_valid.h"
+#include "../s21_common.h"
+#include "s21_polish_format.h"
+
 enum va_error replace_full_name(const struct stack_operators* opers,
                                 const char* str, char* result) {
   enum va_error err = VA_OK;
@@ -14,7 +16,7 @@ enum va_error replace_full_name(const struct stack_operators* opers,
         if (curr_oper_stack.count == 1) {
           replace_one(curr_oper_stack.data[0], &may_unary);
         } else {
-          replace_unary_clones(&curr_oper_stack, &may_unary, curr, nat_name);
+          replace_unary_clones(&curr_oper_stack, &may_unary, curr, &nat_name);
         }
         replace_and_write(&str, &result, curr_oper_stack.data[0].full_name,
                           nat_name);
@@ -62,18 +64,21 @@ struct operator_info binary_from_two(struct operator_info curr,
 }
 
 void replace_one(const struct operator_info o, bool* may_unary) {
-  if (o.o_type == O_RIGHT_BRACKET) may_unary = false;
+  if (o.o_type == O_RIGHT_BRACKET)
+    *may_unary = false;
+  else
+    *may_unary = true;
 }
 
 void replace_unary_clones(const struct stack_operators* fr, bool* may_unary,
-                          const size_t curr, char* nat_name) {
+                          const size_t curr, char** nat_name) {
   for (size_t j = 0; j < fr->count - 1; j++) {
     struct operator_info a = fr->data[j];
     struct operator_info b = fr->data[j + 1];
     if (unary_or_binanry_two(a, b)) {
-      nat_name = unary_from_two(a, b).nat_name;
+      *nat_name = unary_from_two(a, b).nat_name;
       if (!*may_unary) {
-        nat_name = binary_from_two(a, b).nat_name;
+        *nat_name = binary_from_two(a, b).nat_name;
       }
     }
   }

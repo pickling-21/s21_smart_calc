@@ -1,10 +1,8 @@
-#include "s21_valid.h"
-
 #include <stdlib.h>
 #include <string.h>
 
 #include "../stack/s21_operators.h"
-#define STACK_BRACKETS_SIZE 200
+#include "s21_polish_format.h"
 
 enum va_error validator(const char* str, const struct stack_operators* opers) {
   enum va_error res = VA_OK;
@@ -12,7 +10,9 @@ enum va_error validator(const char* str, const struct stack_operators* opers) {
       stack_operators_create(STACK_BRACKETS_SIZE);
   struct stack_operators* br = &brackets_stack;
   for (size_t curr = 0, prev = 0; str[curr] != '\0'; curr++, prev = curr) {
-    if (is_operand(str[curr])) continue;
+    if (is_operand(str[curr])) {
+      continue;
+    }
     struct va_opers o = {
         .curr = stack_operators_find_nat_name(opers, str + curr),
         .prev = none_operator()};

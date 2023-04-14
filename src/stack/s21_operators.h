@@ -7,7 +7,7 @@
 
 #define QTY_OF_OPERS 20
 
-typedef double (*handler)(double);
+typedef bool (*handler)(double* items, double* res);
 
 enum oper_type {
   O_NO_TYPE,

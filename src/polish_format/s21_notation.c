@@ -1,14 +1,13 @@
 
-#include "s21_notation.h"
-
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "s21_common.h"
-#include "stack/s21_list.h"
-#include "stack/s21_operators.h"
+#include "../s21_common.h"
+#include "../stack/s21_list.h"
+#include "../stack/s21_operators.h"
+#include "s21_polish_format.h"
 
 struct list *inf_to_post(char const *str, struct stack_operators *opers) {
   printf("-------------------------------\n");
@@ -27,9 +26,14 @@ struct list *inf_to_post(char const *str, struct stack_operators *opers) {
     }
     printf("%d ", deli);
     stack_operators_print(&stack);
-    deli++;
     printf("\n");
+    printf("%d list =", deli);
+    printf("\n");
+    deli++;
+
+    list_print(l);
   }
+  printf("\n\n");
   while (!stack_operators_is_empty(&stack)) {
     last_from_stack_to_list(l, &stack);
   }
@@ -50,19 +54,21 @@ void add_number(struct list *l, char const **str) {
 struct operator_info check_operators_nat_name(struct stack_operators *opers,
                                               char const **str) {
   struct operator_info o = stack_operators_find_nat_name(opers, *str);
-  if (o.full_name != NULL) *str = *str + strlen(o.full_name);
+  if (o.full_name != NULL) *str = *str + strlen(o.nat_name);
   return o;
 }
 
 void add_operators(struct stack_operators *opers, struct stack_operators *s,
                    struct list *l, struct operator_info curr) {
-  struct operators o = {.curr = curr, .top = stack_operators_last(s)};
+  struct nat_opers o = {.curr = curr, .top = stack_operators_last(s)};
   if (stack_operators_is_empty(s) || is_open_bracket(o.curr)) {
     // если стак пустой или скобка открытая
     stack_operators_push(s, o.curr);
   } else if (is_operation(o.curr)) {
     // если операция
-    while (o.top.priority >= o.curr.priority) {
+    while (!stack_operators_is_empty(s) &&
+           ((is_left_assoc(o.curr) && o.top.priority >= o.curr.priority) ||
+            (!is_left_assoc(o.curr) && o.top.priority > o.curr.priority))) {
       last_from_stack_to_list(l, s);
       o.top = stack_operators_last(s);
     }
@@ -74,4 +80,8 @@ void add_operators(struct stack_operators *opers, struct stack_operators *s,
     }
     stack_operators_pop(s);
   }
+}
+
+bool is_left_assoc(struct operator_info curr) {
+  return curr.o_type == O_BINARY;
 }

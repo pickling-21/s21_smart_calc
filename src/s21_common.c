@@ -15,3 +15,13 @@ bool is_close_bracket(struct operator_info o) {
 bool is_operand(char c) {
   return (c >= '0' && c <= '9') || c == '.' || c == 'x';
 }
+
+void print_error(enum va_error err) {
+  char* errr_message[] = {
+      [VA_BRACKETS] = "неправильное количество скобок",
+      [VA_MALLOC_RES] = "проблема с памятью, лучше перезапустить",
+      [VA_OK] = "Вcе ок",
+      [VA_NO_OPER] = "Нет такой операции",
+      [VA_OPERS_IN_ROW] = "Операции подряд"};
+  printf("%s\n", errr_message[err]);
+}

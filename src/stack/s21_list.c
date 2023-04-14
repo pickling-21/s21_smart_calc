@@ -12,6 +12,10 @@ static struct lexeme some_x() {
   return (struct lexeme){.type = L_X, .oper = {0}, .number = 0};
 }
 
+static struct lexeme none_lexeme() {
+  return (struct lexeme){.type = L_NO_TYPE, .oper = {0}, .number = 0};
+}
+
 struct list *node_create(struct lexeme value) {
   struct list *list = malloc(sizeof(struct list));
   if (list) {
@@ -29,6 +33,19 @@ void list_destroy(struct list *list) {
     list = temp;
   }
   if (list != NULL) free(list);
+}
+
+struct lexeme list_pop_first(struct list *old) {
+  struct lexeme res = none_lexeme();
+  print_lexeme(old->value);
+  // if (old != NULL) {
+  //   // print_lexeme((*old)->next->value);
+  //   // res = (*old)->value;
+  //   struct list *tmp = *old;
+  //   *old = tmp->next;
+  //   free(tmp);
+  // }
+  return res;
 }
 
 void list_add_front(struct list **old, struct lexeme value) {
@@ -85,7 +102,7 @@ static void print_operator(struct operator_info o) {
   printf("%s ", o.nat_name);
 }
 
-static void print_oper_or_num(struct lexeme val) {
+void print_lexeme(struct lexeme val) {
   if (val.type == L_NUMBER) {
     print_int64_space(val.number);
   } else if (val.type == L_OPERATOR) {
@@ -96,7 +113,7 @@ static void print_oper_or_num(struct lexeme val) {
 }
 /*----------------*/
 
-void list_print(struct list const *l) { list_foreach(l, print_oper_or_num); };
+void list_print(struct list const *l) { list_foreach(l, print_lexeme); };
 
 bool last_from_stack_to_list(struct list *l, struct stack_operators *s) {
   bool result = false;

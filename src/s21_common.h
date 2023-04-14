@@ -3,6 +3,14 @@
 #include <stdbool.h>
 
 #include "stack/s21_operators.h"
+enum va_error {
+  VA_OK,
+  VA_BRACKETS,
+  VA_MALLOC_RES,
+  VA_NO_OPER,
+  VA_OPERS_IN_ROW,
+};
+void print_error(enum va_error err);
 bool is_operation(struct operator_info o);
 bool is_open_bracket(struct operator_info o);
 bool is_close_bracket(struct operator_info o);
