@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../stack/s21_operators.h"
+#include "../structs/s21_operators.h"
 #include "s21_polish_format.h"
 
 enum va_error validator(const char* str, const struct stack_operators* opers) {

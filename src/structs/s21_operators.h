@@ -1,13 +1,14 @@
-#ifndef STACK_S21_OPERATORS_STACK_H
-#define STACK_S21_OPERATORS_STACK_H
+#ifndef STRUCTS_S21_OPERATORS_H
+#define STRUCTS_S21_OPERATORS_H
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+#include "s21_double.h"
 #define QTY_OF_OPERS 20
 
-typedef bool (*handler)(double* items, double* res);
+typedef struct maybe_num (*handler)(double* items);
 
 enum oper_type {
   O_NO_TYPE,
@@ -61,4 +62,4 @@ struct operator_info stack_operators_find_nat_name(
     const struct stack_operators* haystack, const char* str_needle);
 /*------------------*/
 
-#endif  // STACK_S21_OPERATORS_STACK_H
+#endif  // STRUCTS_S21_OPERATORS_H

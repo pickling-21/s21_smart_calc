@@ -1,11 +1,8 @@
 #include "s21_double.h"
 
-/* double stack */
+#include "../s21_common.h"
 
-const struct maybe_num none_num = {0};
-struct maybe_num some_num(double i) {
-  return (struct maybe_num){.valid = true, .value = i};
-}
+/* double stack */
 
 struct stack_double stack_double_create(size_t size) {
   struct stack_double result = {0, NULL, 0};
@@ -33,7 +30,7 @@ bool stack_double_push(struct stack_double *s, double value) {
 }
 
 struct maybe_num stack_double_pop(struct stack_double *s) {
-  struct maybe_num result = none_num;
+  struct maybe_num result = none_num();
   if (!stack_double_is_empty(s)) {
     s->count--;
     result = some_num(s->data[s->count]);

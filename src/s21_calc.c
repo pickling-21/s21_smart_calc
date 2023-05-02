@@ -4,8 +4,11 @@
 
 #include "polish_format/s21_polish_format.h"
 #include "s21_polish_calc.h"
-#include "stack/s21_list.h"
+#include "structs/s21_list.h"
 // 6+3*(1+4*5)*2
+
+struct maybe_num sum(double* s) { return some_num(s[0] + s[1]); }
+struct maybe_num sub(double* s) { return some_num(s[0] - s[1]); }
 
 int main() {
   struct stack_operators stack = stack_operators_create(QTY_OF_OPERS);
@@ -13,9 +16,9 @@ int main() {
   stack_operators_push(s, some_operator("(", "(", O_LEFT_BRACKET, 0, NULL));
   stack_operators_push(s, some_operator(")", ")", O_RIGHT_BRACKET, 0, NULL));
 
-  stack_operators_push(s, some_operator("+", "+", O_BINARY, 1, NULL));
+  stack_operators_push(s, some_operator("+", "+", O_BINARY, 1, sum));
   stack_operators_push(s, some_operator("+", "#", O_UNARY, 6, NULL));
-  stack_operators_push(s, some_operator("-", "-", O_BINARY, 1, NULL));
+  stack_operators_push(s, some_operator("-", "-", O_BINARY, 1, sub));
   stack_operators_push(s, some_operator("-", "~", O_UNARY, 6, NULL));
 
   stack_operators_push(s, some_operator("*", "*", O_BINARY, 2, NULL));
@@ -37,9 +40,8 @@ int main() {
 void s21_calc(struct stack_operators* opers) {
   // char str[1000] = "6+3*(1+4*5)*2";
   char str[1000] = "6+3*(1+4*5)*2";
-
   double res = 0;
   struct list* polish_expression = NULL;
-  enum va_error err = polish_format(opers, polish_expression, str);
+  enum va_error err = polish_format(opers, &polish_expression, str);
   if (err == VA_OK) polish_calc(opers, polish_expression, &res);
 }

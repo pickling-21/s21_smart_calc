@@ -1,5 +1,5 @@
-#ifndef STACK_S21_LIST_H
-#define STACK_S21_LIST_H
+#ifndef STRUCTS_S21_LIST_H
+#define STRUCTS_S21_LIST_H
 
 #include "s21_operators.h"
 
@@ -30,7 +30,7 @@ struct list *list_last(struct list *const list);
 void list_foreach(struct list const *l, void(f)(struct lexeme));
 void list_print(struct list const *l);
 bool last_from_stack_to_list(struct list *l, struct stack_operators *s);
-
+struct lexeme list_pop_front(struct list **l);
 void print_lexeme(struct lexeme val);
 
-#endif  // STACK_S21_LIST_H
+#endif  // STRUCTS_S21_LIST_H

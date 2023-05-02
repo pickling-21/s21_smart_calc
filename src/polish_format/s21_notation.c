@@ -5,8 +5,8 @@
 #include <string.h>
 
 #include "../s21_common.h"
-#include "../stack/s21_list.h"
-#include "../stack/s21_operators.h"
+#include "../structs/s21_list.h"
+#include "../structs/s21_operators.h"
 #include "s21_polish_format.h"
 
 struct list *inf_to_post(char const *str, struct stack_operators *opers) {

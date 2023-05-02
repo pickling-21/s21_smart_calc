@@ -35,19 +35,6 @@ void list_destroy(struct list *list) {
   if (list != NULL) free(list);
 }
 
-struct lexeme list_pop_first(struct list *old) {
-  struct lexeme res = none_lexeme();
-  print_lexeme(old->value);
-  // if (old != NULL) {
-  //   // print_lexeme((*old)->next->value);
-  //   // res = (*old)->value;
-  //   struct list *tmp = *old;
-  //   *old = tmp->next;
-  //   free(tmp);
-  // }
-  return res;
-}
-
 void list_add_front(struct list **old, struct lexeme value) {
   struct list *new = node_create(value);
   if (old != NULL) {
@@ -92,6 +79,21 @@ void list_foreach(struct list const *l, void(f)(struct lexeme)) {
   }
 }
 
+struct lexeme list_pop_front(struct list **l) {
+  struct lexeme res = none_lexeme();
+  if (*l == NULL) {
+    printf("\nQueue Underflow");
+  } else {
+    struct list *tmp = *l;
+    res = tmp->value;
+    *l = (*l)->next;
+    free(tmp);
+  }
+  return res;
+}
+
+bool list_is_empty(struct list *l) { return l == NULL; };
+
 /*----------------*/
 static void print_int64_space(double i) {
   printf("%.1lf", i);
@@ -109,6 +111,8 @@ void print_lexeme(struct lexeme val) {
     print_operator(val.oper);
   } else if (val.type == L_X) {
     printf("x ");
+  } else if (val.type == L_NO_TYPE) {
+    printf("no ");
   }
 }
 /*----------------*/

@@ -5,8 +5,8 @@
 
 #include "../s21_calc.h"
 #include "../s21_common.h"
-#include "../stack/s21_list.h"
-#include "../stack/s21_operators.h"
+#include "../structs/s21_list.h"
+#include "../structs/s21_operators.h"
 
 #define STACK_SIZE 300
 #define STACK_BRACKETS_SIZE 200
@@ -24,7 +24,7 @@ struct nat_opers {
 /*=========*/
 // polish format
 enum va_error polish_format(struct stack_operators *s,
-                            struct list *polish_expression, char *expression);
+                            struct list **polish_expression, char *expression);
 
 /*=========*/
 // valid

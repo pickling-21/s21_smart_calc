@@ -2,7 +2,7 @@
 #define S21_COMMON_H
 #include <stdbool.h>
 
-#include "stack/s21_operators.h"
+#include "structs/s21_operators.h"
 enum va_error {
   VA_OK,
   VA_BRACKETS,
@@ -10,6 +10,14 @@ enum va_error {
   VA_NO_OPER,
   VA_OPERS_IN_ROW,
 };
+
+struct maybe_num {
+  double value;
+  bool valid;
+};
+
+struct maybe_num none_num();
+struct maybe_num some_num(double i);
 void print_error(enum va_error err);
 bool is_operation(struct operator_info o);
 bool is_open_bracket(struct operator_info o);
