@@ -1,6 +1,8 @@
 #include "s21_list.h"
 
 #include "s21_operators.h"
+#include "s21_structs.h"
+
 static struct lexeme some_oper(struct operator_info o) {
   return (struct lexeme){.type = L_OPERATOR, .oper = o, .number = 0};
 }

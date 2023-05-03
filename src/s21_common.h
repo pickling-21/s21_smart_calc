@@ -9,19 +9,15 @@ enum va_error {
   VA_MALLOC_RES,
   VA_NO_OPER,
   VA_OPERS_IN_ROW,
+  VA_STACK_UNDERFLOW,
+  VA_ERROR_NUM
 };
 
-struct maybe_num {
-  double value;
-  bool valid;
-};
-
-struct maybe_num none_num();
-struct maybe_num some_num(double i);
 void print_error(enum va_error err);
 bool is_operation(struct operator_info o);
 bool is_open_bracket(struct operator_info o);
 bool is_close_bracket(struct operator_info o);
 
 bool is_operand(char c);
+
 #endif  // S21_COMMON_H

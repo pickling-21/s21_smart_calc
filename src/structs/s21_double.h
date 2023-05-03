@@ -7,7 +7,10 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#include "../s21_common.h"
+#include "s21_structs.h"
+struct maybe_num nan_num();
+struct maybe_num some_num(double i);
+struct maybe_num inf_num();
 
 struct stack_double {
   size_t count;
@@ -22,7 +25,7 @@ enum stack_result {
   STACK_UNDERFLOW,
 };
 /*----------------*/
-bool is_valid(struct maybe_num num);
+// bool is_valid(struc maybe_num num);
 /*double stack*/
 // добавить функции арифметики (для чтения постфиксной нотации)
 struct stack_double stack_double_create(size_t size);
@@ -32,4 +35,5 @@ struct maybe_num stack_double_pop(struct stack_double *s);
 bool stack_double_is_empty(const struct stack_double *s);
 bool stack_double_is_full(const struct stack_double *s);
 
+void stack_double_print(const struct stack_double *s);
 #endif  // STRUCTS_S21_DOUBLE_H

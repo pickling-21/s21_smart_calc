@@ -1,16 +1,7 @@
 #ifndef STRUCTS_S21_LIST_H
 #define STRUCTS_S21_LIST_H
-
 #include "s21_operators.h"
-
-enum l_type { L_NO_TYPE, L_NUMBER, L_X, L_OPERATOR };
-
-struct lexeme {
-  enum l_type type;
-  double number;
-  struct operator_info oper;
-};
-
+#include "s21_structs.h"
 struct list {
   struct lexeme value;
   struct list *next;

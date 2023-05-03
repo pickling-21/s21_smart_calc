@@ -1,3 +1,4 @@
+
 #ifndef STRUCTS_S21_OPERATORS_H
 #define STRUCTS_S21_OPERATORS_H
 #include <stdbool.h>
@@ -5,26 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "s21_double.h"
+#include "s21_structs.h"
 #define QTY_OF_OPERS 20
-
-typedef struct maybe_num (*handler)(double* items);
-
-enum oper_type {
-  O_NO_TYPE,
-  O_UNARY,
-  O_BINARY,
-  O_LEFT_BRACKET,
-  O_RIGHT_BRACKET
-};
-
-struct operator_info {
-  char* full_name;
-  char* nat_name;
-  enum oper_type o_type;
-  uint16_t priority;
-  handler* func;
-};
 
 struct stack_operators {
   struct operator_info* data;
