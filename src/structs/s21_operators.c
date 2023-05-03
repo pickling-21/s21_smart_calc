@@ -121,7 +121,12 @@ static bool find_full_name(struct operator_info n, struct operator_info h) {
   return strncmp(n.full_name, h.full_name, strlen(h.full_name)) == 0;
 }
 static bool find_nat_name(struct operator_info n, struct operator_info h) {
-  return strncmp(n.nat_name, h.nat_name, strlen(h.nat_name)) == 0;
+  printf("str n = %s\n", n.nat_name);
+  printf("str h = %s\n", h.nat_name);
+  printf("len n.nat = %ld\n", strlen(n.nat_name));
+  printf("len h.nat = %ld\n", strlen(h.nat_name));
+
+  return strncmp(n.nat_name, h.nat_name, strlen(n.nat_name)) == 0;
 }
 
 struct operator_info stack_operators_find_nat_name(
@@ -153,9 +158,15 @@ struct stack_operators stack_operators_find(
   struct stack_operators* res = &result;
   if (!stack_operators_is_empty(haystack)) {
     for (size_t i = 0; i < haystack->count; i++) {
+      printf("checking now = ");
+      print_nat_name(haystack->data[i]);
+      printf("\n");
       if (haystack->data[i].o_type != O_NO_TYPE) {
         if (f(needle, haystack->data[i])) {
           stack_operators_push(res, stack_operators_copy(haystack->data[i]));
+          printf("\n\n-------\nPUSH!!!!!\n-------\n\n");
+          print_nat_name(haystack->data[i]);
+          printf("\n");
         }
       } else {
         printf("DEL_no_type");

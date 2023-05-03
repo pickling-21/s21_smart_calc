@@ -2,6 +2,7 @@
 
 #ifndef STRUCTS_S21_DOUBLE_H
 #define STRUCTS_S21_DOUBLE_H
+#include <math.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>

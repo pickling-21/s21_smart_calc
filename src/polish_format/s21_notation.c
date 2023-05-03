@@ -46,7 +46,7 @@ void add_number(struct list *l, char const **str) {
     double number = strtod(*str, &end_number);
     list_add_back_num(&l, number);
   } else {
-    list_add_back_x(&l);
+    list_add_back_num(&l, X);
   }
   *str = (end_number != NULL) ? end_number : *str + 1;
 }

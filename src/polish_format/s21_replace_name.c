@@ -3,9 +3,16 @@
 
 enum va_error replace_full_name(const struct stack_operators* opers,
                                 const char* str, char* result) {
+  printf("\n");
   enum va_error err = VA_OK;
   bool may_unary = true;
+  const char* del_str = str;
+  const char* del_res = result;
+
   for (size_t curr = 0; *str != '\0' && err == VA_OK; curr++) {
+    printf("str start %s\n", str + curr);
+    printf("res start %s\n", del_res);
+
     if (!is_operand(*str) && !is_space(*str)) {
       struct stack_operators curr_oper_stack =
           stack_operators_find_full_name(opers, str);
@@ -32,7 +39,8 @@ enum va_error replace_full_name(const struct stack_operators* opers,
         *result++ = *str++;
       }
     }
-    printf("str now %s\n", str + curr);
+    printf("str end %s\n", str + curr);
+    printf("res end %s\n", del_res);
   }
   *result = '\0';
   return err;
