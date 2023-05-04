@@ -1,7 +1,7 @@
 #ifndef S21_COMMON_H
 #define S21_COMMON_H
 #include <stdbool.h>
-#define X 1
+#define X 3.141593
 #include "structs/s21_operators.h"
 enum va_error {
   VA_OK,
@@ -10,7 +10,8 @@ enum va_error {
   VA_NO_OPER,
   VA_OPERS_IN_ROW,
   VA_STACK_UNDERFLOW,
-  VA_ERROR_NUM
+  VA_ERROR_NUM,
+  VA_ERROR_CALC
 };
 
 void print_error(enum va_error err);

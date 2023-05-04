@@ -10,17 +10,18 @@ struct operator_info none_operator() {
 
 struct operator_info some_operator(const char* full_name, const char* nat_name,
                                    enum oper_type type, uint16_t priority,
-                                   handler* func) {
+                                   handler* func, enum assoc a) {
   if (full_name == NULL) full_name = "";
   if (nat_name == NULL) nat_name = "";
   return (struct operator_info){.full_name = strdup(full_name),
                                 .nat_name = strdup(nat_name),
                                 .o_type = type,
                                 .priority = priority,
-                                .func = func};
+                                .func = func,
+                                .assoc = a};
 }
 
-static void free_names(struct operator_info o) {
+void stack_operators_free_names(struct operator_info o) {
   if (strcmp(o.full_name, "") != 0 && o.full_name != NULL) free(o.full_name);
   if (strcmp(o.nat_name, "") != 0 && o.full_name != NULL) free(o.nat_name);
 }
@@ -45,7 +46,7 @@ struct stack_operators stack_operators_create(size_t size) {
 
 void stack_operators_destroy(struct stack_operators* s) {
   if (s != NULL) {
-    stack_operators_foreach(s, free_names);
+    stack_operators_foreach(s, stack_operators_free_names);
     free(s->data);
     s->size = 0;
     s->data = 0;
@@ -88,8 +89,9 @@ struct operator_info stack_operators_last(struct stack_operators* s) {
 }
 
 struct operator_info stack_operators_copy(const struct operator_info src) {
-  struct operator_info dst = some_operator(src.full_name, src.nat_name,
-                                           src.o_type, src.priority, src.func);
+  struct operator_info dst =
+      some_operator(src.full_name, src.nat_name, src.o_type, src.priority,
+                    src.func, src.assoc);
   return dst;
 }
 
@@ -121,21 +123,16 @@ static bool find_full_name(struct operator_info n, struct operator_info h) {
   return strncmp(n.full_name, h.full_name, strlen(h.full_name)) == 0;
 }
 static bool find_nat_name(struct operator_info n, struct operator_info h) {
-  printf("str n = %s\n", n.nat_name);
-  printf("str h = %s\n", h.nat_name);
-  printf("len n.nat = %ld\n", strlen(n.nat_name));
-  printf("len h.nat = %ld\n", strlen(h.nat_name));
-
-  return strncmp(n.nat_name, h.nat_name, strlen(n.nat_name)) == 0;
+  return strncmp(n.nat_name, h.nat_name, strlen(h.nat_name)) == 0;
 }
 
 struct operator_info stack_operators_find_nat_name(
     const struct stack_operators* haystack, const char* str_needle) {
   struct operator_info needle =
-      some_operator(NULL, str_needle, O_NO_TYPE, 0, NULL);
+      some_operator(NULL, str_needle, O_NO_TYPE, 0, NULL, ASSOC_LEFT);
   struct stack_operators fr =
       stack_operators_find(haystack, needle, find_nat_name);
-  free_names(needle);
+  stack_operators_free_names(needle);
   struct operator_info res = stack_operators_copy(fr.data[0]);
   stack_operators_destroy(&fr);
   return res;
@@ -144,10 +141,10 @@ struct operator_info stack_operators_find_nat_name(
 struct stack_operators stack_operators_find_full_name(
     const struct stack_operators* haystack, const char* str_needle) {
   struct operator_info needle =
-      some_operator(str_needle, NULL, O_NO_TYPE, 0, NULL);
+      some_operator(str_needle, NULL, O_NO_TYPE, 0, NULL, ASSOC_LEFT);
   struct stack_operators res =
       stack_operators_find(haystack, needle, find_full_name);
-  free_names(needle);
+  stack_operators_free_names(needle);
   return res;
 }
 
@@ -158,15 +155,15 @@ struct stack_operators stack_operators_find(
   struct stack_operators* res = &result;
   if (!stack_operators_is_empty(haystack)) {
     for (size_t i = 0; i < haystack->count; i++) {
-      printf("checking now = ");
-      print_nat_name(haystack->data[i]);
-      printf("\n");
+      // printf("checking now = ");
+      // print_nat_name(haystack->data[i]);
+      // printf("\n");
       if (haystack->data[i].o_type != O_NO_TYPE) {
         if (f(needle, haystack->data[i])) {
           stack_operators_push(res, stack_operators_copy(haystack->data[i]));
-          printf("\n\n-------\nPUSH!!!!!\n-------\n\n");
-          print_nat_name(haystack->data[i]);
-          printf("\n");
+          // printf("\n\n-------\nPUSH!!!!!\n-------\n\n");
+          // print_nat_name(haystack->data[i]);
+          // printf("\n");
         }
       } else {
         printf("DEL_no_type");

@@ -14,7 +14,6 @@ enum va_error polish_format(struct stack_operators* s,
       error = validator(res_str, s);
       if (error == VA_OK) {
         printf("res_str = %s\n", res_str);
-        return 0;
         *polish_expression = inf_to_post(res_str, s);
       }
     }

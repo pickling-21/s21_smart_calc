@@ -83,5 +83,5 @@ void add_operators(struct stack_operators *opers, struct stack_operators *s,
 }
 
 bool is_left_assoc(struct operator_info curr) {
-  return curr.o_type == O_BINARY;
+  return curr.assoc == ASSOC_LEFT;
 }

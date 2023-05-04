@@ -19,8 +19,9 @@ typedef bool find(struct operator_info, struct operator_info);
 
 struct operator_info some_operator(const char* full_name, const char* nat_name,
                                    enum oper_type type, uint16_t priority,
-                                   handler* func);
+                                   handler* func, enum assoc a);
 struct operator_info none_operator();
+void stack_operators_free_names(struct operator_info o);
 /*------------------*/
 struct stack_operators stack_operators_create(size_t size);
 void stack_operators_destroy(struct stack_operators* s);
@@ -30,7 +31,7 @@ struct operator_info stack_operators_pop(struct stack_operators* s);
 bool stack_operators_is_empty(const struct stack_operators* s);
 bool stack_operators_is_full(const struct stack_operators* s);
 struct operator_info stack_operators_last(struct stack_operators* s);
-
+struct operator_info stack_operators_copy(const struct operator_info src);
 /*------------------*/
 void stack_operators_print_start(struct stack_operators* s);
 void stack_operators_print(struct stack_operators* s);

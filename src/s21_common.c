@@ -23,6 +23,9 @@ void print_error(enum va_error err) {
       [VA_MALLOC_RES] = "проблема с памятью, лучше перезапустить",
       [VA_OK] = "Вcе ок",
       [VA_NO_OPER] = "Нет такой операции",
-      [VA_OPERS_IN_ROW] = "Операции подряд"};
+      [VA_OPERS_IN_ROW] = "Операции подряд",
+      [VA_STACK_UNDERFLOW] = "Не хватило операндов",
+      [VA_ERROR_NUM] = "Ошибка числа",
+      [VA_ERROR_CALC] = "Не получилось посчитать"};
   printf("%s\n", errr_message[err]);
 }

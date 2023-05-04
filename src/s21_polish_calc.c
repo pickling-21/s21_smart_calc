@@ -46,7 +46,7 @@ enum va_error polish_calc(const struct stack_operators *opers,
   } else {
     error = VA_MALLOC_RES;
   }
-
+  if (!stack_double_is_empty) error = VA_ERROR_CALC;
   printf("result = ");
   stack_double_print(&st);
   stack_double_destroy(&st);

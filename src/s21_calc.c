@@ -34,31 +34,49 @@ struct maybe_num s21_log(double* s) { return some_num(log10(s[0])); }
 int main() {
   struct stack_operators stack = stack_operators_create(QTY_OF_OPERS);
   struct stack_operators* s = &stack;
-  stack_operators_push(s, some_operator("(", "(", O_LEFT_BRACKET, 0, NULL));
-  stack_operators_push(s, some_operator(")", ")", O_RIGHT_BRACKET, 0, NULL));
+  stack_operators_push(
+      s, some_operator("(", "(", O_LEFT_BRACKET, 0, NULL, ASSOC_LEFT));
+  stack_operators_push(
+      s, some_operator(")", ")", O_RIGHT_BRACKET, 0, NULL, ASSOC_LEFT));
 
-  stack_operators_push(s, some_operator("+", "+", O_BINARY, 1, s21_sum));
-  stack_operators_push(s, some_operator("+", "#", O_UNARY, 6, s21_nothing));
-  stack_operators_push(s, some_operator("-", "-", O_BINARY, 1, s21_sub));
-  stack_operators_push(s, some_operator("-", "~", O_UNARY, 6, s21_negate));
+  stack_operators_push(
+      s, some_operator("+", "+", O_BINARY, 1, s21_sum, ASSOC_LEFT));
+  stack_operators_push(
+      s, some_operator("+", "#", O_UNARY, 6, s21_nothing, ASSOC_RIGHT));
+  stack_operators_push(
+      s, some_operator("-", "-", O_BINARY, 1, s21_sub, ASSOC_LEFT));
+  stack_operators_push(
+      s, some_operator("-", "~", O_UNARY, 6, s21_negate, ASSOC_RIGHT));
+  stack_operators_push(
+      s, some_operator("*", "*", O_BINARY, 2, s21_mul, ASSOC_LEFT));
+  stack_operators_push(
+      s, some_operator("/", "/", O_BINARY, 2, s21_div, ASSOC_LEFT));
+  stack_operators_push(
+      s, some_operator("mod", "m", O_BINARY, 2, s21_mod, ASSOC_LEFT));
 
-  stack_operators_push(s, some_operator("*", "*", O_BINARY, 2, s21_mul));
-  stack_operators_push(s, some_operator("/", "/", O_BINARY, 2, s21_div));
-  stack_operators_push(s, some_operator("mod", "m", O_BINARY, 2, s21_mod));
+  stack_operators_push(
+      s, some_operator("^", "^", O_BINARY, 3, s21_power, ASSOC_LEFT));
 
-  stack_operators_push(s, some_operator("^", "^", O_BINARY, 3, s21_power));
+  stack_operators_push(
+      s, some_operator("sin", "s", O_UNARY, 4, s21_sin, ASSOC_LEFT));
+  stack_operators_push(
+      s, some_operator("cos", "c", O_UNARY, 4, s21_cos, ASSOC_LEFT));
+  stack_operators_push(
+      s, some_operator("tan", "t", O_UNARY, 4, s21_tan, ASSOC_LEFT));
 
-  stack_operators_push(s, some_operator("sin", "s", O_UNARY, 4, s21_sin));
-  stack_operators_push(s, some_operator("cos", "c", O_UNARY, 4, s21_cos));
-  stack_operators_push(s, some_operator("tan", "t", O_UNARY, 4, s21_tan));
+  stack_operators_push(
+      s, some_operator("acos", "ac", O_UNARY, 4, s21_acos, ASSOC_LEFT));
+  stack_operators_push(
+      s, some_operator("asin", "as", O_UNARY, 4, s21_asin, ASSOC_LEFT));
+  stack_operators_push(
+      s, some_operator("atan", "at", O_UNARY, 4, s21_atan, ASSOC_LEFT));
 
-  stack_operators_push(s, some_operator("acos", "ac", O_UNARY, 4, s21_acos));
-  stack_operators_push(s, some_operator("asin", "as", O_UNARY, 4, s21_asin));
-  stack_operators_push(s, some_operator("atan", "at", O_UNARY, 4, s21_atan));
-
-  stack_operators_push(s, some_operator("sqrt", "sq", O_UNARY, 4, s21_sqrt));
-  stack_operators_push(s, some_operator("ln", "ln", O_UNARY, 4, s21_ln));
-  stack_operators_push(s, some_operator("log", "lg", O_UNARY, 4, s21_log));
+  stack_operators_push(
+      s, some_operator("sqrt", "qs", O_UNARY, 4, s21_sqrt, ASSOC_LEFT));
+  stack_operators_push(
+      s, some_operator("ln", "nl", O_UNARY, 4, s21_ln, ASSOC_LEFT));
+  stack_operators_push(
+      s, some_operator("log", "gl", O_UNARY, 4, s21_log, ASSOC_LEFT));
 
   stack_operators_print_start(s);
 
@@ -69,7 +87,7 @@ int main() {
 
 void s21_calc(struct stack_operators* opers) {
   // char str[1000] = "6+3*(1+4*5)*2";
-  char str[1000] = "sqrt(4)";
+  char str[1000] = "sin+sin";
   double res = 0;
   struct list* polish_expression = NULL;
   enum va_error err = polish_format(opers, &polish_expression, str);

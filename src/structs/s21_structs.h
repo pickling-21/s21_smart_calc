@@ -15,12 +15,15 @@ enum oper_type {
   O_RIGHT_BRACKET
 };
 
+enum assoc { ASSOC_LEFT, ASSOC_RIGHT };
+
 struct operator_info {
   char* full_name;
   char* nat_name;
   enum oper_type o_type;
   uint16_t priority;
   handler* func;
+  enum assoc assoc;
 };
 
 enum l_type { L_NO_TYPE, L_NUMBER, L_X, L_OPERATOR };
