@@ -1,0 +1,1199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1208</width>
+    <height>483</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLineEdit" name="lineEdit_main">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>641</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_7">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>200</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(213, 214, 177);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102);
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>7</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_8">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>200</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(213, 214, 177);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102);
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>8</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_9">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>200</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(213, 214, 177);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102);
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>9</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_div">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>200</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(205, 156, 153);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(133, 107, 106) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>/</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>270</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(213, 214, 177);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102);
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>5</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_6">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>270</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(213, 214, 177);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102);
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>6</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_mul">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>270</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(205, 156, 153);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(133, 107, 106) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>*</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>270</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(213, 214, 177);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102);
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>4</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>340</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(213, 214, 177);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102);
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>340</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(213, 214, 177);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102);
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>3</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_minus">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>340</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(205, 156, 153);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(133, 107, 106) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>-</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_1">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>340</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(213, 214, 177);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102);
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_0">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>410</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(213, 214, 177);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102);
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_eq">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>410</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(159, 186, 211);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>=</string>
+    </property>
+    <property name="autoDefault">
+     <bool>true</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_plus">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>410</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(205, 156, 153);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(133, 107, 106) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>+</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_dot">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>410</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(159, 186, 211);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>.</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_left">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>200</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(213, 214, 177);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102);
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>(</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_right">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>200</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(213, 214, 177);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102);
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>)</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_C">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>200</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(159, 186, 211);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>C</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_mod">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>200</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(205, 156, 153);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(133, 107, 106) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>mod</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_cos">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>270</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(184, 185, 212);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(98, 99, 135) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>cos</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_sin">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>270</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(184, 185, 212);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(98, 99, 135) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>sin</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_tan">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>270</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(184, 185, 212);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(98, 99, 135) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>tan</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_pow">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>270</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(205, 156, 153);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(133, 107, 106) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>^</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_acos">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>340</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(184, 185, 212);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(98, 99, 135) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>acos</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_asin">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>340</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(184, 185, 212);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(98, 99, 135) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>asin</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_atan">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>340</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(184, 185, 212);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(98, 99, 135) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>atan</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_sqrt">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>340</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(184, 185, 212);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(98, 99, 135) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>sqrt</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_ln">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>410</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(184, 185, 212);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(98, 99, 135) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>ln</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_log">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>410</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(184, 185, 212);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(98, 99, 135) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>log</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_graph">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>91</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>graph</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_x">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>10</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">LineEdit_x {
+background-color : white;
+border-color: 1px solid white;
+}
+
+</string>
+    </property>
+    <property name="text">
+     <string>3.1</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>10</y>
+      <width>21</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+  qproperty-alignment: 'AlignVCenter | AlignRight';
+background-color : white;
+border-color: 0px solid white;
+}
+
+</string>
+    </property>
+    <property name="text">
+     <string>x = </string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_x">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>410</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(184, 185, 212);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(98, 99, 135) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_AC">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>410</y>
+      <width>70</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+  background-color: rgb(159, 186, 211);
+  color: rgb(0, 0, 0);
+  border: 0.5px solid rgb(137, 138, 102) ;
+}
+
+QPushButton:pressed {
+ border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string>AC</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_term_type">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>90</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>лет</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>месяцев</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>50</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Сумма кредита</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>100</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Срок кредита</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>160</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Процентная ставка</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>190</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Тип ежемесячных 
+платежей</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>260</y>
+      <width>521</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>370</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ежемесячный платеж</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>320</y>
+      <width>141</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Переплата по кредиту</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>280</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Общая выплата</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_sum">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>50</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_term">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>100</y>
+      <width>261</width>
+      <height>35</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_interest">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>150</y>
+      <width>261</width>
+      <height>35</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_psk">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>290</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-color: 1 px solid rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_ann">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>200</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>аннуитетный</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_diff">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>200</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>дифференцированный</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>150</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>%</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>50</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>₽</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_credit">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>430</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Рассчитать</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_overpay">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>330</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-color: 1 px solid rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="label_monthly_payment">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>380</y>
+      <width>241</width>
+      <height>91</height>
+     </rect>
+    </property>
+   </widget>
+   <zorder>lineEdit_main</zorder>
+   <zorder>pushButton_7</zorder>
+   <zorder>pushButton_8</zorder>
+   <zorder>pushButton_9</zorder>
+   <zorder>pushButton_div</zorder>
+   <zorder>pushButton_5</zorder>
+   <zorder>pushButton_6</zorder>
+   <zorder>pushButton_mul</zorder>
+   <zorder>pushButton_4</zorder>
+   <zorder>pushButton_2</zorder>
+   <zorder>pushButton_3</zorder>
+   <zorder>pushButton_minus</zorder>
+   <zorder>pushButton_1</zorder>
+   <zorder>pushButton_0</zorder>
+   <zorder>pushButton_eq</zorder>
+   <zorder>pushButton_plus</zorder>
+   <zorder>pushButton_dot</zorder>
+   <zorder>pushButton_left</zorder>
+   <zorder>pushButton_right</zorder>
+   <zorder>pushButton_C</zorder>
+   <zorder>pushButton_mod</zorder>
+   <zorder>pushButton_cos</zorder>
+   <zorder>pushButton_sin</zorder>
+   <zorder>pushButton_tan</zorder>
+   <zorder>pushButton_pow</zorder>
+   <zorder>pushButton_acos</zorder>
+   <zorder>pushButton_asin</zorder>
+   <zorder>pushButton_atan</zorder>
+   <zorder>pushButton_sqrt</zorder>
+   <zorder>pushButton_ln</zorder>
+   <zorder>pushButton_log</zorder>
+   <zorder>pushButton_graph</zorder>
+   <zorder>label</zorder>
+   <zorder>lineEdit_x</zorder>
+   <zorder>pushButton_x</zorder>
+   <zorder>pushButton_AC</zorder>
+   <zorder>comboBox_term_type</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_5</zorder>
+   <zorder>line</zorder>
+   <zorder>label_6</zorder>
+   <zorder>label_7</zorder>
+   <zorder>label_8</zorder>
+   <zorder>lineEdit_sum</zorder>
+   <zorder>lineEdit_term</zorder>
+   <zorder>lineEdit_interest</zorder>
+   <zorder>label_psk</zorder>
+   <zorder>radioButton_ann</zorder>
+   <zorder>radioButton_diff</zorder>
+   <zorder>label_12</zorder>
+   <zorder>label_13</zorder>
+   <zorder>pushButton_credit</zorder>
+   <zorder>label_overpay</zorder>
+   <zorder>label_monthly_payment</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

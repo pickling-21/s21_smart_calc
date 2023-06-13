@@ -15,19 +15,28 @@ struct maybe_num some_num(double i) {
   return res;
 }
 
-struct stack_double stack_double_create(size_t size) {
-  struct stack_double result = {0, NULL, 0};
+bool stack_double_create(size_t size, struct stack_double *result) {
+  bool err = false;
+  result->data = NULL;
+  result->count = 0;
+  result->size = 0;
+
   if (size > 0) {
-    result.data = malloc(sizeof(double) * size);
-    result.size = size;
+    result->data = malloc(sizeof(double) * size);
+    if (result->data) {
+      result->size = size;
+      err = true;
+    }
   }
-  return result;
+  return err;
 }
 
 void stack_double_destroy(struct stack_double *s) {
-  free(s->data);
-  s->count = 0;
-  s->size = 0;
+  if (s != NULL) {
+    free(s->data);
+    s->count = 0;
+    s->data = 0;
+  }
 };
 
 bool stack_double_push(struct stack_double *s, double value) {
@@ -58,11 +67,11 @@ bool stack_double_is_empty(const struct stack_double *s) {
   return (*s).count == 0;
 }
 
-void stack_double_print(const struct stack_double *s) {
-  for (size_t i = 0; i < s->count; i++) {
-    printf("%.10lf ", s->data[i]);
-  }
-  printf("\n");
-}
+// void stack_double_print(const struct stack_double *s) {
+//   for (size_t i = 0; i < s->count; i++) {
+//     printf("%.10lf ", s->data[i]);
+//   }
+//   printf("\n");
+// }
 
 /*---------------------*/

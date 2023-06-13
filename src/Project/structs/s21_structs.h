@@ -12,26 +12,27 @@ enum oper_type {
   O_UNARY,
   O_BINARY,
   O_LEFT_BRACKET,
-  O_RIGHT_BRACKET
+  O_RIGHT_BRACKET,
+  O_OPERAND
 };
 
 enum assoc { ASSOC_LEFT, ASSOC_RIGHT };
 
 struct operator_info {
-  char* full_name;
-  char* nat_name;
+  const char* full_name;
+  const char* nat_name;
   enum oper_type o_type;
-  uint16_t priority;
+  int priority;
   handler* func;
   enum assoc assoc;
 };
 
-enum l_type { L_NO_TYPE, L_NUMBER, L_X, L_OPERATOR };
+enum l_type { L_NO_TYPE, L_NUMBER, L_OPERATOR };
 
 struct lexeme {
   enum l_type type;
   double number;
-  struct operator_info oper;
+  struct operator_info* oper;
 };
 
 enum valid_num { M_N_OK, M_N_NAN, M_N_INF };

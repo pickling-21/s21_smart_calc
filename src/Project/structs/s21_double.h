@@ -29,7 +29,7 @@ enum stack_result {
 // bool is_valid(struc maybe_num num);
 /*double stack*/
 // добавить функции арифметики (для чтения постфиксной нотации)
-struct stack_double stack_double_create(size_t size);
+bool stack_double_create(size_t size, struct stack_double *result);
 void stack_double_destroy(struct stack_double *s);
 bool stack_double_push(struct stack_double *s, double value);
 struct maybe_num stack_double_pop(struct stack_double *s);
