@@ -86,7 +86,7 @@ clean:
 push: 
 	git add .
 	git commit -m'$m'
-	git push '$o'
+	git push $o
 
 # m - commit 
 # o - origin
