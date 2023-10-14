@@ -27,8 +27,8 @@
       9. Десятичный логарифм
 
 
-## Установка: make install в папке src
+**Установка**: make install в папке src
 
-## Запуск приложения: make start
+**Запуск приложения**: make start
 
-## Удаление: make uninstall
+**Удаление**: make uninstall
